@@ -20,7 +20,28 @@ function initNavigation() {
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger-menu');
     const navMenu = document.getElementById('nav-menu');
+    const navBackdrop = document.getElementById('nav-backdrop');
     const navLinks = document.querySelectorAll('.nav-link');
+    const MOBILE_NAV_BREAKPOINT = 1024;
+
+    function setMenuOpen(isOpen) {
+        hamburger.classList.toggle('open', isOpen);
+        navMenu.classList.toggle('open', isOpen);
+        if (navBackdrop) {
+            navBackdrop.classList.toggle('visible', isOpen);
+            navBackdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        }
+        document.body.classList.toggle('menu-open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function closeMenu() {
+        setMenuOpen(false);
+    }
+
+    function isMobileNav() {
+        return window.innerWidth < MOBILE_NAV_BREAKPOINT;
+    }
 
     // Scroll effect to shrink nav and add backdrop glass filter
     window.addEventListener('scroll', () => {
@@ -49,18 +70,33 @@ function initNavigation() {
         });
     });
 
-    // Mobile Hamburger Toggle
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-controls', 'nav-menu');
+
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navMenu.classList.toggle('open');
+        setMenuOpen(!navMenu.classList.contains('open'));
     });
 
-    // Close menu when a navigation item is clicked
+    if (navBackdrop) {
+        navBackdrop.addEventListener('click', closeMenu);
+    }
+
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navMenu.classList.remove('open');
-        });
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.querySelector('.nav-drawer-cta')?.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (!isMobileNav()) {
+            closeMenu();
+        }
     });
 }
 
