@@ -1,5 +1,5 @@
 /**
- * Suhail - MERN Developer Portfolio JavaScript Logic
+ * Suhail KV - MERN Developer Portfolio JavaScript Logic
  * Premium micro-interactions, responsive listeners, and mock systems
  */
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSkillsFilter();
     initContactForm();
     initChatbot();
+    initTouchEffects();
 });
 
 /* -------------------------------------------------------------
@@ -183,7 +184,7 @@ function initTerminalTyper() {
     if (!container) return;
 
     // The code structure we want to type out dynamically
-    const codeString = `  console.log("MERN Stack initialized.");\r\n  console.log("Welcome to Suhail's Devspace!");\r\n}`;
+    const codeString = `  console.log("MERN Stack initialized.");\r\n  console.log("Welcome to Suhail KV's Devspace!");\r\n}`;
     let charIndex = 0;
     
     // We start with line 10 already containing "function initPortfolio() {"
@@ -478,13 +479,13 @@ function initChatbot() {
 
     // Smart responses database
     const responseDb = {
-        skills: "Suhail is a specialized Full-Stack MERN Developer. His core expertise includes: React.js (Frontend library), Node.js (Runtime system), Express.js (REST APIs framework), and MongoDB (Database schema design). He also uses Redux Toolkit, WebSockets, HTML5, CSS3, and Tailwind CSS!",
-        about: "Suhail is an experienced Full-Stack Developer specializing in crafting robust MERN stack applications. He loves optimizing backend database systems, building scalable middleware APIs, and creating responsive, pixel-perfect user interfaces.",
-        projects: "Suhail has engineered several premium projects: \n1. NexaCart – An enterprise-level MERN E-Commerce engine with JWT, Stripe payments, and admin dashboards. \n2. SyncWave – A real-time chat workspace built with React & Socket.io for immediate collaboration. \n3. InsightDB – An AI analytics dashboard connected to OpenAI API.",
-        hire: "You can hire Suhail by emailing him directly at suhailbinsidheek@gmail.com, or by using the contact form on the portfolio page. He is currently available for full-time MERN developer roles and freelance collaborations!",
-        hello: "Hi there! I'm Suhail's AI Assistant. Ask me anything about his MERN skills, projects, or how to hire him!",
-        contact: "To contact Suhail, you can send him an email at suhailbinsidheek@gmail.com or fill out the contact form below. You can also connect with him on LinkedIn, GitHub, or Instagram!",
-        resume: "To request Suhail's resume, please send an email to suhailbinsidheek@gmail.com or submit a request via the contact form on this page!"
+        skills: "Suhail KV is a specialized Full-Stack MERN Developer. His core expertise includes: React.js (Frontend library), Node.js (Runtime system), Express.js (REST APIs framework), and MongoDB (Database schema design). He also uses Redux Toolkit, WebSockets, HTML5, CSS3, and Tailwind CSS!",
+        about: "Suhail KV is an experienced Full-Stack Developer specializing in crafting robust MERN stack applications. He loves optimizing backend database systems, building scalable middleware APIs, and creating responsive, pixel-perfect user interfaces.",
+        projects: "Suhail KV has engineered several premium projects: \n1. NexaCart – An enterprise-level MERN E-Commerce engine with JWT, Stripe payments, and admin dashboards. \n2. SyncWave – A real-time chat workspace built with React & Socket.io for immediate collaboration. \n3. InsightDB – An AI analytics dashboard connected to OpenAI API.",
+        hire: "You can hire Suhail KV by emailing him directly at suhailbinsidheek@gmail.com, or by using the contact form on the portfolio page. He is currently available for full-time MERN developer roles and freelance collaborations!",
+        hello: "Hi there! I'm Suhail KV's AI Assistant. Ask me anything about his MERN skills, projects, or how to hire him!",
+        contact: "To contact Suhail KV, you can send him an email at suhailbinsidheek@gmail.com or fill out the contact form below. You can also connect with him on LinkedIn, GitHub, or Instagram!",
+        resume: "To request Suhail KV's resume, please send an email to suhailbinsidheek@gmail.com or submit a request via the contact form on this page!"
     };
 
     // Toggle chatbot window open/close
@@ -548,7 +549,7 @@ function initChatbot() {
             return responseDb.hello;
         }
         
-        return "I'm Suhail's AI bot! For specific MERN stack technical assessments or to discuss joining your team, please contact Suhail directly at suhailbinsidheek@gmail.com, or fill out the form on this page.";
+        return "I'm Suhail KV's AI bot! For specific MERN stack technical assessments or to discuss joining your team, please contact Suhail KV directly at suhailbinsidheek@gmail.com, or fill out the form on this page.";
     }
 
     // Process user message submission
@@ -594,4 +595,80 @@ function initChatbot() {
             handleMessageSubmit(promptText);
         });
     });
+}
+
+/* -------------------------------------------------------------
+ * 16. MOBILE TOUCH FEEDBACK (Ripple + Press)
+ * ------------------------------------------------------------- */
+function initTouchEffects() {
+    const isTouchDevice =
+        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+        navigator.maxTouchPoints > 0;
+
+    if (!isTouchDevice) return;
+
+    document.documentElement.classList.add('touch-device');
+
+    const touchSelectors = [
+        '.btn-btn',
+        '.nav-link',
+        '.nav-drawer-cta',
+        '.social-icon',
+        '.filter-btn',
+        '.cursor-spotlight',
+        '.prompt-chip',
+        '.chatbot-toggle',
+        '.chatbot-send-btn',
+        '.hamburger-menu',
+        '.project-link',
+        '.logo',
+        '.footer-logo',
+        '.footer-link',
+        '.blueprint-node',
+        '.btn-copy',
+        '.btn-submit'
+    ].join(',');
+
+    document.querySelectorAll(touchSelectors).forEach((el) => {
+        if (el.classList.contains('touch-bound')) return;
+        el.classList.add('touch-bound', 'touch-ripple-host');
+
+        el.addEventListener(
+            'touchstart',
+            (e) => {
+                if (e.touches.length > 1) return;
+                el.classList.add('is-touch-pressed');
+                spawnTouchRipple(el, e.touches[0]);
+            },
+            { passive: true }
+        );
+
+        const release = () => el.classList.remove('is-touch-pressed');
+        el.addEventListener('touchend', release, { passive: true });
+        el.addEventListener('touchcancel', release, { passive: true });
+    });
+
+    /* Light haptic-style pulse on primary CTAs when supported */
+    document.querySelectorAll('.btn-primary, .nav-drawer-cta, .chatbot-toggle').forEach((el) => {
+        el.addEventListener(
+            'touchend',
+            () => {
+                if (navigator.vibrate) navigator.vibrate(8);
+            },
+            { passive: true }
+        );
+    });
+}
+
+function spawnTouchRipple(element, touch) {
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 0.85;
+    const ripple = document.createElement('span');
+    ripple.className = 'touch-ripple';
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${touch.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${touch.clientY - rect.top - size / 2}px`;
+    element.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
 }

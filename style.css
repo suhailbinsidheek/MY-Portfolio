@@ -2538,3 +2538,101 @@ a.detail-value:hover {
     height: 16px;
 }
 
+/* -------------------------------------------------------------
+ * 16. MOBILE TOUCH EFFECTS
+ * ------------------------------------------------------------- */
+.touch-device {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-device .btn-btn,
+.touch-device .nav-link,
+.touch-device .social-icon,
+.touch-device .filter-btn,
+.touch-device .prompt-chip,
+.touch-device .chatbot-toggle,
+.touch-device .chatbot-send-btn,
+.touch-device .hamburger-menu,
+.touch-device .project-link,
+.touch-device .logo,
+.touch-device .footer-logo,
+.touch-device .blueprint-node,
+.touch-device .btn-copy {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.touch-ripple-host {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.touch-ripple {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+    background: radial-gradient(
+        circle,
+        rgba(var(--accent-cyan-rgb), 0.45) 0%,
+        rgba(var(--accent-violet-rgb), 0.2) 45%,
+        transparent 70%
+    );
+    transform: scale(0);
+    animation: touchRippleExpand 0.55s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes touchRippleExpand {
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.touch-device .is-touch-pressed {
+    transform: scale(0.96);
+    transition: transform 0.1s ease;
+}
+
+.touch-device .btn-primary.is-touch-pressed,
+.touch-device .nav-drawer-cta.is-touch-pressed {
+    transform: scale(0.94);
+    box-shadow: 0 0 24px rgba(var(--accent-violet-rgb), 0.45);
+}
+
+.touch-device .cursor-spotlight.is-touch-pressed {
+    transform: scale(0.98) translateY(-2px);
+}
+
+.touch-device .social-icon.is-touch-pressed {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.touch-device .filter-btn.is-touch-pressed,
+.touch-device .prompt-chip.is-touch-pressed {
+    border-color: var(--accent-violet);
+    background: rgba(var(--accent-violet-rgb), 0.12);
+}
+
+.touch-device .nav-link.is-touch-pressed {
+    color: var(--text-primary);
+    padding-left: 6px;
+}
+
+.touch-device .blueprint-node.is-touch-pressed {
+    transform: scale(1.06);
+}
+
+@media (max-width: 767px) {
+    .logo {
+        font-size: clamp(16px, 4.2vw, 20px);
+        letter-spacing: -0.3px;
+    }
+
+    .footer-logo {
+        font-size: clamp(15px, 4vw, 18px);
+    }
+}
