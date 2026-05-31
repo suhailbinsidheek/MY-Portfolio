@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initChatbot();
     initTouchEffects();
+    // ── Premium Animations ──
+    initScrollProgressBar();
+    initScrollReveal();
+    initProjectTilt();
+    initParticleBurst();
+    initSectionHeaderAnimations();
 });
 
 /* -------------------------------------------------------------
@@ -671,4 +677,203 @@ function spawnTouchRipple(element, touch) {
     ripple.style.top = `${touch.clientY - rect.top - size / 2}px`;
     element.appendChild(ripple);
     ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+}
+
+/* =============================================================
+ * PREMIUM ANIMATION SYSTEM
+ * ============================================================= */
+
+/* -------------------------------------------------------------
+ * A. SCROLL PROGRESS BAR
+ * ------------------------------------------------------------- */
+function initScrollProgressBar() {
+    const bar = document.createElement('div');
+    bar.id = 'scroll-progress-bar';
+    document.body.prepend(bar);
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = total > 0 ? (scrolled / total) * 100 : 0;
+        bar.style.width = `${pct}%`;
+    }, { passive: true });
+}
+
+/* -------------------------------------------------------------
+ * B. SCROLL-REVEAL (IntersectionObserver — zero layout thrash)
+ * ------------------------------------------------------------- */
+function initScrollReveal() {
+    // Assign reveal classes to elements
+    const revealMap = [
+        // About section
+        { selector: '.about-info',    cls: 'reveal-left'  },
+        { selector: '.about-visual',  cls: 'reveal-right' },
+        { selector: '.highlight-item',cls: 'reveal-fade', stagger: true },
+
+        // Skills
+        { selector: '.skills-filter', cls: 'reveal-fade'  },
+        { selector: '.skill-card',    cls: 'reveal-scale', stagger: true },
+
+        // Projects
+        { selector: '.project-card',  cls: 'reveal-fade',  stagger: true },
+
+        // Contact
+        { selector: '.contact-info',  cls: 'reveal-left'  },
+        { selector: '.contact-form-container', cls: 'reveal-right' },
+    ];
+
+    revealMap.forEach(({ selector, cls, stagger }) => {
+        document.querySelectorAll(selector).forEach((el, i) => {
+            el.classList.add(cls);
+            if (stagger) {
+                el.style.setProperty('--reveal-delay', `${i * 80}ms`);
+            }
+        });
+    });
+
+    // Section headers
+    document.querySelectorAll('.section-header').forEach(header => {
+        header.querySelectorAll('.section-subtitle, .title-divider').forEach(el => {
+            el.classList.add('reveal-target-header');
+        });
+    });
+
+    // Footer
+    document.querySelector('.footer')?.classList.add('footer-anim-target');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+
+            el.classList.add('revealed');
+
+            // Also reveal child header elements
+            el.querySelectorAll('.section-subtitle, .title-divider').forEach(child => {
+                child.classList.add('revealed');
+            });
+
+            // Reveal project tag spans
+            if (el.classList.contains('project-card')) {
+                el.classList.add('revealed');
+            }
+
+            // Reveal contact form
+            if (el.classList.contains('contact-form')) {
+                el.classList.add('revealed');
+            }
+
+            // Footer
+            if (el.tagName === 'FOOTER') {
+                el.classList.add('revealed');
+            }
+
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    // Observe all reveal targets
+    document.querySelectorAll(
+        '.reveal-fade, .reveal-left, .reveal-right, .reveal-scale, ' +
+        '.contact-form, .footer, .section-header'
+    ).forEach(el => observer.observe(el));
+}
+
+/* -------------------------------------------------------------
+ * C. 3D MAGNETIC TILT on Project Cards
+ * ------------------------------------------------------------- */
+function initProjectTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches) return; // skip on touch
+
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const cx = rect.left + rect.width  / 2;
+            const cy = rect.top  + rect.height / 2;
+            const dx = (e.clientX - cx) / (rect.width  / 2); // -1 to 1
+            const dy = (e.clientY - cy) / (rect.height / 2); // -1 to 1
+
+            const tiltX = dy * -8;  // max ±8deg vertical tilt
+            const tiltY = dx *  8;  // max ±8deg horizontal tilt
+
+            card.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+            card.style.transition = 'transform 0.1s ease-out';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+        });
+    });
+}
+
+/* -------------------------------------------------------------
+ * D. PARTICLE BURST on CTA Button Clicks
+ * ------------------------------------------------------------- */
+function initParticleBurst() {
+    const colors = [
+        'rgba(99,102,241,0.9)',
+        'rgba(34,211,238,0.9)',
+        'rgba(16,255,180,0.85)',
+        'rgba(167,139,250,0.9)',
+        '#fff',
+    ];
+
+    document.querySelectorAll('.btn-primary, .btn-glowing-border').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            spawnParticles(e.clientX, e.clientY);
+        });
+    });
+
+    function spawnParticles(x, y) {
+        const count = 14;
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('span');
+            p.className = 'particle';
+
+            const size = 4 + Math.random() * 6;
+            const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.5;
+            const dist  = 50 + Math.random() * 70;
+            const tx = Math.cos(angle) * dist;
+            const ty = Math.sin(angle) * dist - 30;
+
+            p.style.cssText = `
+                width:${size}px; height:${size}px;
+                background:${colors[i % colors.length]};
+                left:${x - size/2}px; top:${y - size/2}px;
+                --tx:${tx}px; --ty:${ty}px;
+                animation-delay:${Math.random() * 0.1}s;
+                box-shadow: 0 0 ${size * 2}px ${colors[i % colors.length]};
+            `;
+            document.body.appendChild(p);
+            p.addEventListener('animationend', () => p.remove(), { once: true });
+        }
+    }
+}
+
+/* -------------------------------------------------------------
+ * E. SECTION HEADER: WORD-SPLIT TITLE + SUBTITLE/DIVIDER REVEAL
+ * ------------------------------------------------------------- */
+function initSectionHeaderAnimations() {
+    // Split section titles into individual word spans
+    document.querySelectorAll('.section-title').forEach(title => {
+        const words = title.innerHTML.split(' ');
+        title.innerHTML = words
+            .map((w, i) => `<span class="word" style="--word-index:${i}; transition-delay:${i * 80}ms">${w}</span>`)
+            .join(' ');
+    });
+
+    // Observe section headers for clip/width animations
+    const headerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const header = entry.target;
+            header.querySelector('.section-subtitle')?.classList.add('revealed');
+            header.querySelector('.section-title')?.classList.add('revealed');
+            header.querySelector('.title-divider')?.classList.add('revealed');
+            headerObserver.unobserve(header);
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.section-header').forEach(h => headerObserver.observe(h));
 }
