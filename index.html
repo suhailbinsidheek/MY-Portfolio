@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,10 +18,33 @@
         rel="stylesheet">
     <!-- Main Style Sheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./under.css">
 </head>
 
-<body>
+<body class="is-loading">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Professional Startup Animation -->
+    <div class="site-intro" id="site-intro" aria-label="Loading portfolio">
+        <div class="intro-shell">
+            <div class="intro-mark" aria-hidden="true">
+                <span class="intro-cube-face intro-front">SK</span>
+                <span class="intro-cube-face intro-back">JS</span>
+                <span class="intro-cube-face intro-right">UI</span>
+                <span class="intro-cube-face intro-left">API</span>
+                <span class="intro-cube-face intro-top">DB</span>
+                <span class="intro-cube-face intro-bottom">UX</span>
+            </div>
+            <div class="intro-copy">
+                <span class="intro-kicker">PORTFOLIO LOADING</span>
+                <strong>Suhail KV</strong>
+                <span>MERN Full-Stack Developer</span>
+            </div>
+            <div class="intro-progress" aria-hidden="true">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Background Glow Elements -->
     <div class="bg-glow-container">
         <div class="bg-glow-orb orb-1"></div>
@@ -65,7 +88,7 @@
     <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
     <!-- Main Content Wrapper -->
-    <main>
+    <main id="main-content">
 
         <!-- HERO SECTION -->
         <section class="section hero" id="home">
@@ -98,7 +121,7 @@
                     </div>
 
                     <div class="hero-socials">
-                        <a href="https://github.com/suhailbinsidheek" target="_blank" class="social-icon"
+                        <a href="https://github.com/suhailbinsidheek" target="_blank" rel="noopener noreferrer" class="social-icon"
                             aria-label="GitHub">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -108,7 +131,7 @@
                                 <path d="M9 18c-4.51 2-5-2-7-2"></path>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/suhailbinsidheek/" target="_blank" class="social-icon"
+                        <a href="https://www.linkedin.com/in/suhailbinsidheek/" target="_blank" rel="noopener noreferrer" class="social-icon"
                             aria-label="LinkedIn">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -119,16 +142,13 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="https://x.com/SuhailKv42399" target="_blank" class="social-icon" aria-label="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                                <path fill="rgb(255, 255, 255)"
-                                    d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM457.1 180L353.3 298.6L475.4 460L379.8 460L305 362.1L219.3 460L171.8 460L282.8 333.1L165.7 180L263.7 180L331.4 269.5L409.6 180L457.1 180zM419.3 431.6L249.4 206.9L221.1 206.9L392.9 431.6L419.3 431.6z" />
+                        <a href="https://x.com/SuhailKv42399" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
+                            <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M160 96C124.7 96 96 124.7 96 160v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H160zm297.1 84L353.3 298.6 475.4 460h-95.6L305 362.1 219.3 460h-47.5l111-126.9L165.7 180h98l67.7 89.5 78.2-89.5h47.5zM419.3 431.6 249.4 206.9h-28.3l171.8 224.7h26.4z" />
                             </svg>
-                            <path
-                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
-                            </path></svg>
                         </a>
-                        <a href="https://www.instagram.com/suhailbinsidheek?utm_source=qr&igsh=cnh1emdjamxpaGRr" target="_blank" class="social-icon" aria-label="Instagram">
+                        <a href="https://www.instagram.com/suhailbinsidheek?utm_source=qr&igsh=cnh1emdjamxpaGRr" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -204,7 +224,7 @@
                         </h3>
                         <p class="about-text">
                             My journey in software engineering revolves around creating dynamic web solutions. As a
-                            specialized MERN Developer, I love handling the complete product lifecycle—from designing
+                            specialized MERN Developer, I love handling the complete product lifecycle - from designing
                             optimal, flexible MongoDB schemas and constructing highly performant Express/Node.js RESTful
                             APIs, to designing responsive, interactive React frontends.
                         </p>
@@ -468,313 +488,47 @@
                     <div class="title-divider"></div>
                 </div>
 
-                <!-- ═══════════════════════════════════════════════
-                     UNDER CONSTRUCTION SCENE
-                ═══════════════════════════════════════════════ -->
-                <div class="uc-scene" id="uc-scene">
+                <div class="projects-loading-stage cursor-spotlight" aria-label="Featured projects under construction">
+                    <div class="loading-scene" aria-hidden="true">
+                        <div class="loader-grid-floor"></div>
+                        <div class="loader-ring ring-one"></div>
+                        <div class="loader-ring ring-two"></div>
+                        <div class="loader-ring ring-three"></div>
 
-                    <!-- Floating background stars -->
-                    <div class="uc-stars">
-                        <span class="uc-star" style="--x:8%;--y:12%;--d:2.1s;--s:0.5"></span>
-                        <span class="uc-star" style="--x:18%;--y:35%;--d:3.4s;--s:0.7"></span>
-                        <span class="uc-star" style="--x:75%;--y:10%;--d:1.8s;--s:0.4"></span>
-                        <span class="uc-star" style="--x:88%;--y:28%;--d:2.7s;--s:0.6"></span>
-                        <span class="uc-star" style="--x:55%;--y:8%;--d:3.1s;--s:0.5"></span>
-                        <span class="uc-star" style="--x:92%;--y:60%;--d:2.0s;--s:0.3"></span>
-                        <span class="uc-star" style="--x:5%;--y:70%;--d:4.2s;--s:0.4"></span>
-                        <span class="uc-star" style="--x:40%;--y:90%;--d:1.5s;--s:0.6"></span>
-                        <span class="uc-star" style="--x:66%;--y:82%;--d:3.8s;--s:0.35"></span>
-                        <span class="uc-star" style="--x:28%;--y:78%;--d:2.5s;--s:0.5"></span>
+                        <div class="loader-core">
+                            <span class="loader-face face-front">DEV</span>
+                            <span class="loader-face face-back">MERN</span>
+                            <span class="loader-face face-right">API</span>
+                            <span class="loader-face face-left">UI</span>
+                            <span class="loader-face face-top">DB</span>
+                            <span class="loader-face face-bottom">JS</span>
+                        </div>
+
+                        <div class="loader-satellite sat-one"></div>
+                        <div class="loader-satellite sat-two"></div>
+                        <div class="loader-satellite sat-three"></div>
                     </div>
 
-                    <!-- Floating Code Snippets -->
-                    <div class="uc-code-float uc-cf1"><span class="cf-line">&lt;Building/&gt;</span></div>
-                    <div class="uc-code-float uc-cf2"><span class="cf-line">npm install</span></div>
-                    <div class="uc-code-float uc-cf3"><span class="cf-line">git commit -m "✨"</span></div>
-                    <div class="uc-code-float uc-cf4"><span class="cf-line">const dreams = true;</span></div>
+                    <div class="loading-copy">
+                        <span class="loading-kicker">FEATURED PROJECTS</span>
+                        <h3 class="loading-title">Under construction</h3>
+                        <p class="loading-desc">
+                            Client-ready case studies are loading. I am preparing polished project stories with
+                            architecture, UI previews, backend workflows, and real implementation details.
+                        </p>
 
-                    <!-- Animated Gears (top-right decoration) -->
-                    <div class="uc-gears">
-                        <div class="uc-gear uc-gear-big">⚙</div>
-                        <div class="uc-gear uc-gear-small">⚙</div>
-                    </div>
-
-                    <!-- === MAIN CARTOON CHARACTER + LAPTOP === -->
-                    <div class="uc-character-wrap">
-
-                        <!-- Floor / desk shadow -->
-                        <div class="uc-shadow"></div>
-
-                        <!-- Desk + Laptop group -->
-                        <div class="uc-desk-group">
-
-                            <!-- Coffee mug (animated floating) -->
-                            <div class="uc-mug-wrap">
-                                <div class="uc-steam">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <svg class="uc-mug" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Mug body -->
-                                    <rect x="5" y="20" width="40" height="38" rx="6" fill="#1e293b" stroke="#6366f1"
-                                        stroke-width="2.5" />
-                                    <!-- Mug handle -->
-                                    <path d="M45 28 Q62 28 62 39 Q62 50 45 50" stroke="#6366f1" stroke-width="3"
-                                        fill="none" stroke-linecap="round" />
-                                    <!-- Coffee surface -->
-                                    <ellipse cx="25" cy="22" rx="17" ry="5" fill="#7c3aed" opacity="0.6" />
-                                    <!-- Mug text -->
-                                    <text x="11" y="44" fill="#22d3ee" font-size="9" font-family="monospace"
-                                        font-weight="bold">&lt;/&gt;</text>
-                                    <!-- Mug base -->
-                                    <rect x="2" y="57" width="46" height="6" rx="3" fill="#334155" />
-                                </svg>
+                        <div class="loading-progress" aria-hidden="true">
+                            <div class="loading-progress-top">
+                                <span>Building showcase</span>
+                                <span>Loading</span>
                             </div>
-
-                            <!-- Laptop -->
-                            <div class="uc-laptop-wrap">
-                                <svg class="uc-laptop" viewBox="0 0 300 210" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Screen base / lid -->
-                                    <rect x="20" y="10" width="260" height="165" rx="14" fill="#0f172a" stroke="#6366f1"
-                                        stroke-width="3" />
-                                    <!-- Screen bezel inner -->
-                                    <rect x="30" y="20" width="240" height="145" rx="8" fill="#060a18" />
-                                    <!-- Screen glow overlay -->
-                                    <rect x="30" y="20" width="240" height="145" rx="8" fill="url(#screenGrad)"
-                                        opacity="0.85" />
-                                    <defs>
-                                        <linearGradient id="screenGrad" x1="30" y1="20" x2="270" y2="165"
-                                            gradientUnits="userSpaceOnUse">
-                                            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15" />
-                                            <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.08" />
-                                        </linearGradient>
-                                        <filter id="screenGlow">
-                                            <feGaussianBlur stdDeviation="3" result="blur" />
-                                            <feMerge>
-                                                <feMergeNode in="blur" />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
-                                        </filter>
-                                    </defs>
-
-                                    <!-- Code lines on screen (animated) -->
-                                    <g class="uc-screen-code">
-                                        <!-- Line 1 -->
-                                        <rect x="42" y="35" width="90" height="7" rx="3.5" fill="#6366f1"
-                                            opacity="0.8" />
-                                        <rect x="138" y="35" width="50" height="7" rx="3.5" fill="#22d3ee"
-                                            opacity="0.6" />
-                                        <!-- Line 2 -->
-                                        <rect x="52" y="50" width="60" height="6" rx="3" fill="#10ffb4" opacity="0.7" />
-                                        <rect x="118" y="50" width="80" height="6" rx="3" fill="#a78bfa"
-                                            opacity="0.5" />
-                                        <!-- Line 3 -->
-                                        <rect x="52" y="65" width="110" height="6" rx="3" fill="#34d399"
-                                            opacity="0.6" />
-                                        <!-- Line 4 -->
-                                        <rect x="42" y="80" width="70" height="6" rx="3" fill="#f43f5e" opacity="0.7" />
-                                        <rect x="118" y="80" width="40" height="6" rx="3" fill="#fbbf24"
-                                            opacity="0.6" />
-                                        <!-- Line 5 -->
-                                        <rect x="52" y="95" width="130" height="6" rx="3" fill="#6366f1"
-                                            opacity="0.5" />
-                                        <!-- Cursor blink line -->
-                                        <rect x="52" y="110" width="55" height="6" rx="3" fill="#22d3ee"
-                                            opacity="0.7" />
-                                        <rect class="uc-cursor-blink" x="110" y="110" width="10" height="6" rx="2"
-                                            fill="#10ffb4" />
-                                        <!-- Line 7 -->
-                                        <rect x="42" y="125" width="40" height="6" rx="3" fill="#a78bfa"
-                                            opacity="0.6" />
-                                        <rect x="88" y="125" width="90" height="6" rx="3" fill="#6366f1"
-                                            opacity="0.4" />
-                                        <!-- Line 8 -->
-                                        <rect x="52" y="140" width="80" height="6" rx="3" fill="#10ffb4"
-                                            opacity="0.5" />
-                                    </g>
-
-                                    <!-- Webcam dot -->
-                                    <circle cx="150" cy="16" r="3" fill="#6366f1" opacity="0.6" />
-
-                                    <!-- Laptop base/keyboard -->
-                                    <rect x="5" y="175" width="290" height="22" rx="6" fill="#1e293b" stroke="#334155"
-                                        stroke-width="2" />
-                                    <!-- Keyboard rows -->
-                                    <rect x="30" y="180" width="240" height="5" rx="2.5" fill="#0f172a" opacity="0.5" />
-                                    <!-- Touchpad -->
-                                    <rect x="115" y="188" width="70" height="5" rx="2.5" fill="#0f172a" opacity="0.4" />
-                                </svg>
-
-                                <!-- Laptop screen glow effect -->
-                                <div class="uc-laptop-glow"></div>
-                            </div>
-
-                            <!-- Desk surface -->
-                            <div class="uc-desk">
-                                <div class="uc-desk-edge"></div>
-                            </div>
-                        </div><!-- /uc-desk-group -->
-
-                        <!-- === CHARACTER SVG === -->
-                        <div class="uc-char">
-                            <svg class="uc-person" viewBox="0 0 180 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                                <!-- Chair back -->
-                                <rect x="72" y="215" width="36" height="80" rx="8" fill="#1e293b" stroke="#334155"
-                                    stroke-width="2" />
-                                <!-- Chair seat -->
-                                <rect x="55" y="275" width="70" height="18" rx="9" fill="#1e293b" stroke="#334155"
-                                    stroke-width="2" />
-                                <!-- Chair legs -->
-                                <rect x="65" y="290" width="8" height="28" rx="4" fill="#334155" />
-                                <rect x="107" y="290" width="8" height="28" rx="4" fill="#334155" />
-
-                                <!-- Body / torso (hoodie) -->
-                                <rect x="52" y="148" width="76" height="75" rx="22" fill="#6366f1" />
-                                <!-- Hoodie pocket -->
-                                <rect x="72" y="185" width="36" height="22" rx="8" fill="#4f46e5" />
-                                <!-- Hoodie strings -->
-                                <line x1="85" y1="170" x2="80" y2="188" stroke="#a78bfa" stroke-width="2.5"
-                                    stroke-linecap="round" />
-                                <line x1="95" y1="170" x2="100" y2="188" stroke="#a78bfa" stroke-width="2.5"
-                                    stroke-linecap="round" />
-
-                                <!-- Left ARM (typing) -->
-                                <g class="uc-arm-left">
-                                    <rect x="25" y="158" width="32" height="14" rx="7" fill="#6366f1" />
-                                    <!-- Forearm -->
-                                    <rect x="18" y="168" width="28" height="12" rx="6" fill="#fbbf24" opacity="0.9" />
-                                    <!-- Hand -->
-                                    <ellipse cx="20" cy="177" rx="10" ry="8" fill="#fde68a" />
-                                    <!-- Fingers -->
-                                    <rect x="11" y="170" width="5" height="10" rx="2.5" fill="#fde68a" />
-                                    <rect x="17" y="168" width="5" height="12" rx="2.5" fill="#fde68a" />
-                                    <rect x="23" y="168" width="5" height="11" rx="2.5" fill="#fde68a" />
-                                    <rect x="29" y="170" width="4" height="9" rx="2" fill="#fde68a" />
-                                </g>
-
-                                <!-- Right ARM (typing) -->
-                                <g class="uc-arm-right">
-                                    <rect x="123" y="158" width="32" height="14" rx="7" fill="#6366f1" />
-                                    <!-- Forearm -->
-                                    <rect x="134" y="168" width="28" height="12" rx="6" fill="#fbbf24" opacity="0.9" />
-                                    <!-- Hand -->
-                                    <ellipse cx="150" cy="177" rx="10" ry="8" fill="#fde68a" />
-                                    <!-- Fingers -->
-                                    <rect x="144" y="170" width="4" height="9" rx="2" fill="#fde68a" />
-                                    <rect x="150" y="168" width="5" height="11" rx="2.5" fill="#fde68a" />
-                                    <rect x="156" y="168" width="5" height="12" rx="2.5" fill="#fde68a" />
-                                    <rect x="162" y="168" width="5" height="10" rx="2.5" fill="#fde68a" />
-                                </g>
-
-                                <!-- NECK -->
-                                <rect x="79" y="128" width="22" height="24" rx="8" fill="#fde68a" />
-
-                                <!-- HEAD -->
-                                <ellipse cx="90" cy="108" rx="40" ry="38" fill="#fde68a" />
-                                <!-- Cheek blush left -->
-                                <ellipse cx="60" cy="118" rx="9" ry="6" fill="#fca5a5" opacity="0.5" />
-                                <!-- Cheek blush right -->
-                                <ellipse cx="120" cy="118" rx="9" ry="6" fill="#fca5a5" opacity="0.5" />
-
-                                <!-- HAIR -->
-                                <ellipse cx="90" cy="76" rx="40" ry="20" fill="#1e293b" />
-                                <rect x="50" y="72" width="80" height="20" rx="0" fill="#1e293b" />
-                                <!-- Hair tuft -->
-                                <ellipse cx="90" cy="68" rx="14" ry="10" fill="#334155" />
-                                <!-- Side hair left -->
-                                <ellipse cx="54" cy="94" rx="8" ry="18" fill="#1e293b" />
-                                <!-- Side hair right -->
-                                <ellipse cx="126" cy="94" rx="8" ry="18" fill="#1e293b" />
-
-                                <!-- EYE LEFT -->
-                                <g class="uc-eye-left">
-                                    <ellipse cx="74" cy="110" rx="11" ry="12" fill="white" />
-                                    <ellipse cx="74" cy="112" rx="7" ry="8" fill="#1e293b" />
-                                    <ellipse cx="74" cy="112" rx="4" ry="5" fill="#6366f1" />
-                                    <ellipse cx="74" cy="112" rx="2" ry="2.5" fill="#111" />
-                                    <!-- Eye shine -->
-                                    <circle cx="78" cy="109" r="2" fill="white" />
-                                    <!-- Eyelid for blink -->
-                                    <rect class="uc-eyelid-l" x="63" y="98" width="22" height="0" rx="4"
-                                        fill="#fde68a" />
-                                </g>
-
-                                <!-- EYE RIGHT -->
-                                <g class="uc-eye-right">
-                                    <ellipse cx="106" cy="110" rx="11" ry="12" fill="white" />
-                                    <ellipse cx="106" cy="112" rx="7" ry="8" fill="#1e293b" />
-                                    <ellipse cx="106" cy="112" rx="4" ry="5" fill="#6366f1" />
-                                    <ellipse cx="106" cy="112" rx="2" ry="2.5" fill="#111" />
-                                    <!-- Eye shine -->
-                                    <circle cx="110" cy="109" r="2" fill="white" />
-                                    <!-- Eyelid for blink -->
-                                    <rect class="uc-eyelid-r" x="95" y="98" width="22" height="0" rx="4"
-                                        fill="#fde68a" />
-                                </g>
-
-                                <!-- EYEBROWS -->
-                                <path d="M63 97 Q74 91 85 97" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"
-                                    fill="none" />
-                                <path d="M95 97 Q106 91 117 97" stroke="#1e293b" stroke-width="3.5"
-                                    stroke-linecap="round" fill="none" />
-
-                                <!-- SMILE (satisfied devloper) -->
-                                <path d="M76 126 Q90 138 104 126" stroke="#f97316" stroke-width="3"
-                                    stroke-linecap="round" fill="none" />
-
-                                <!-- Headphone left cup -->
-                                <ellipse cx="52" cy="106" rx="10" ry="14" fill="#4f46e5" opacity="0.9" />
-                                <ellipse cx="52" cy="106" rx="6" ry="9" fill="#6366f1" />
-                                <!-- Headphone right cup -->
-                                <ellipse cx="128" cy="106" rx="10" ry="14" fill="#4f46e5" opacity="0.9" />
-                                <ellipse cx="128" cy="106" rx="6" ry="9" fill="#6366f1" />
-                                <!-- Headphone band -->
-                                <path d="M52 93 Q90 65 128 93" stroke="#334155" stroke-width="6" fill="none"
-                                    stroke-linecap="round" />
-
-                                <!-- Legs -->
-                                <rect x="62" y="223" width="24" height="55" rx="12" fill="#1e293b" />
-                                <rect x="94" y="223" width="24" height="55" rx="12" fill="#1e293b" />
-                                <!-- Shoes left -->
-                                <ellipse cx="74" cy="280" rx="18" ry="9" fill="#0f172a" />
-                                <!-- Shoes right -->
-                                <ellipse cx="106" cy="280" rx="18" ry="9" fill="#0f172a" />
-
-                            </svg>
-                        </div><!-- /uc-char -->
-
-                    </div><!-- /uc-character-wrap -->
-
-                    <!-- === CONSTRUCTION SIGN === -->
-                    <div class="uc-sign-wrap">
-                        <div class="uc-sign">
-                            <div class="uc-sign-tape uc-tape-left"></div>
-                            <div class="uc-sign-tape uc-tape-right"></div>
-                            <div class="uc-sign-inner">
-                                <div class="uc-sign-emoji">🚧</div>
-                                <h3 class="uc-sign-title">Under Construction</h3>
-                                <p class="uc-sign-sub">Amazing projects are being crafted.<br>Check back very soon!</p>
-                                <div class="uc-progress-bar-wrap">
-                                    <div class="uc-progress-label">
-                                        <span>Building...</span>
-                                        <span class="uc-pct" id="uc-pct">0%</span>
-                                    </div>
-                                    <div class="uc-progress-track">
-                                        <div class="uc-progress-fill" id="uc-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="uc-tags">
-                                    <span>MERN Apps</span>
-                                    <span>AI Tools</span>
-                                    <span>Real-Time Apps</span>
-                                </div>
+                            <div class="loading-track">
+                                <span class="loading-fill"></span>
                             </div>
                         </div>
-                        <div class="uc-pole"></div>
                     </div>
-
-                </div><!-- /uc-scene -->
+                    <div class="card-glow"></div>
+                </div>
 
             </div>
         </section>
@@ -797,7 +551,7 @@
                         <h3 class="contact-heading">Ready to discuss your next project?</h3>
                         <p class="contact-desc">
                             Whether you need a reliable developer to build out a new MERN application from scratch,
-                            optimize an existing backend database layer, or join your dynamic product team—I am always
+                            optimize an existing backend database layer, or join your dynamic product team - I am always
                             open to new and exciting challenges!
                         </p>
 
@@ -834,7 +588,7 @@
                                 </div>
                                 <div class="detail-text-wrap">
                                     <span class="detail-label">Location</span>
-                                    <span class="detail-value">Kerala,India(Available for Remote Work)</span>
+                                    <span class="detail-value">Kerala, India (Available for Remote Work)</span>
                                 </div>
                                 <div class="card-glow"></div>
                             </div>
@@ -1011,3 +765,5 @@
 </body>
 
 </html>
+
+

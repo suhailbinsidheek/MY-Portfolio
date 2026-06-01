@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPageIntro();
     initNavigation();
     initCursorGlow();
     initCardSpotlight();
@@ -19,6 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticleBurst();
     initSectionHeaderAnimations();
 });
+
+/* -------------------------------------------------------------
+ * 0. PROFESSIONAL FIRST-LOAD INTRO
+ * ------------------------------------------------------------- */
+function initPageIntro() {
+    const intro = document.getElementById('site-intro');
+    if (!intro) {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('page-ready');
+        return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const introDuration = prefersReducedMotion ? 120 : 1350;
+
+    window.setTimeout(() => {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('page-ready');
+        intro.classList.add('intro-hidden');
+
+        window.setTimeout(() => {
+            intro.remove();
+        }, prefersReducedMotion ? 120 : 650);
+    }, introDuration);
+}
 
 /* -------------------------------------------------------------
  * 1. HEADER SCROLL & MOBILE MENU INTERACTION
